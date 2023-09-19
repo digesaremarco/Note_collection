@@ -4,8 +4,8 @@
 
 #include "Note.h"
 
-bool Note::getModify() const {
-    return modify;
+bool Note::getLocked() const {
+    return locked;
 }
 
 bool Note::operator==(const Note &other) {
@@ -20,8 +20,8 @@ void Note::setTitle(std::string t) {
     title = t;
 }
 
-void Note::setModify(bool m) {
-    modify = m;
+void Note::setLocked(bool l) {
+    locked = l;
 }
 
 std::string Note::getText() const {

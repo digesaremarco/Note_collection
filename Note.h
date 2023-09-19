@@ -11,14 +11,14 @@
 class Note {
 private:
     std::string title, text;
-    bool modify;
+    bool locked; //allows modification and deletion
 
 public:
 
-    Note(std::string ti, std::string te, bool m) : title(ti), text(te), modify(m) {}
+    Note(std::string ti, std::string te, bool l) : title(ti), text(te), locked(l) {}
 
-    bool getModify() const;
-    void setModify(bool m);
+    bool getLocked() const;
+    void setLocked(bool l);
 
     std::string getTitle() const;
 
