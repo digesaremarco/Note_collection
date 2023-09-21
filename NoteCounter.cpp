@@ -6,4 +6,5 @@
 #include "NoteCounter.h"
 
 void NoteCounter::update() {
-    std::cout << "There are " << subject.getSize() << " notes" << std::endl;}
+    std::cout << "There are " << subject.getSize() << " notes" << std::endl;
+}

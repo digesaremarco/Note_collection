@@ -94,3 +94,12 @@ void Collection::notify() {
 int Collection::getSize() const {
     return notes.size();
 }
+
+int Collection::getLockedNotes() const {
+    int count = 0;
+    for (auto n: notes) {
+        if (n.getLocked())
+            count++;
+    }
+    return count;
+}

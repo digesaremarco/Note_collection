@@ -42,6 +42,8 @@ public:
     void notify() override;
 
     int getSize() const;
+
+    int getLockedNotes() const;
 };
 
 
