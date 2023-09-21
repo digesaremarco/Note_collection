@@ -23,6 +23,12 @@ public:
 
     void removeNote(Note &oldnote);
 
+    void showNote(Note &note) const;
+
+    void updateNote(Note &note);
+
+    void updateLocked(Note &note);
+
     void setTitle(std::string t);
 
     std::string getTitle() const;
