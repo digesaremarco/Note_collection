@@ -90,3 +90,7 @@ void Collection::notify() {
     for (auto ob: observers)
         ob->update();
 }
+
+int Collection::getSize() const {
+    return notes.size();
+}
