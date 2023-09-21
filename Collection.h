@@ -9,11 +9,13 @@
 #include <string>
 #include <list>
 #include "Note.h"
+#include "Subject.h"
 
-class Collection {
+class Collection : public Subject {
 private:
     std::string title;
     std::list<Note> notes;
+    std::list<Observer *> observers;
     bool important;
 
 public:
@@ -32,6 +34,12 @@ public:
     void setTitle(std::string t);
 
     std::string getTitle() const;
+
+    void addObserver(Observer *o) override;
+
+    void removeObserver(Observer *o) override;
+
+    void notify() override;
 };
 
 
