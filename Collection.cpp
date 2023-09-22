@@ -6,7 +6,15 @@
 #include "Collection.h"
 
 void Collection::addNote(Note &newnote) {
-    notes.push_back(newnote);
+    bool found = false;
+    for (auto n: notes) {
+        if (n == newnote)
+            found = true;
+    }
+    if (!found) {
+        notes.push_back(newnote); //insert only if it doesn't find the note
+        std::cout << "new note added" << std::endl;
+    } else std::cout << "error" << std::endl;
 }
 
 void Collection::removeNote(Note &oldnote) {
@@ -17,6 +25,7 @@ void Collection::removeNote(Note &oldnote) {
     }
     if (found && oldnote.getLocked()) {
         notes.remove(oldnote); //remove only if it finds the note and it is editable
+        std::cout << "note removed" << std::endl;
     } else std::cout << "error" << std::endl;
 }
 
@@ -102,4 +111,8 @@ int Collection::getLockedNotes() const {
             count++;
     }
     return count;
+}
+
+bool Collection::operator==(const Collection &other) {
+    return title == other.title;
 }

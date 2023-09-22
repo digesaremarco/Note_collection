@@ -44,6 +44,8 @@ public:
     int getSize() const;
 
     int getLockedNotes() const;
+
+    bool operator==(const Collection &other);
 };
 
 
