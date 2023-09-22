@@ -46,6 +46,8 @@ public:
     int getLockedNotes() const;
 
     bool operator==(const Collection &other);
+
+    bool getImportant() const;
 };
 
 

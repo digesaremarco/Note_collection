@@ -15,9 +15,9 @@ private:
     std::list<Observer *> observers;
 
 public:
-    void addNote(Note &note, Collection &mycollection);
+    void addNote(Note &note, Collection &mycollection) const;
 
-    void removeNote(Note &note, Collection &mycollection);
+    void removeNote(Note &note, Collection &mycollection) const;
 
     void addCollection(Collection &newcollection);
 
@@ -28,6 +28,10 @@ public:
     void removeObserver(Observer *o) override;
 
     void notify() override;
+
+    int getSize() const;
+
+    int getImportantCounter() const;
 
 };
 

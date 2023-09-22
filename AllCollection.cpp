@@ -31,7 +31,7 @@ void AllCollection::removeCollection(Collection &oldcollection) {
     } else std::cout << "error" << std::endl;
 }
 
-void AllCollection::addNote(Note &note, Collection &mycollection) {
+void AllCollection::addNote(Note &note, Collection &mycollection) const {
     bool found = false;
     for (auto c: collection) {
         if (c == mycollection) {
@@ -44,7 +44,7 @@ void AllCollection::addNote(Note &note, Collection &mycollection) {
     } else std::cout << "error" << std::endl;
 }
 
-void AllCollection::removeNote(Note &note, Collection &mycollection) {
+void AllCollection::removeNote(Note &note, Collection &mycollection) const {
     bool found = false;
     for (auto c: collection) {
         if (c == mycollection) {
@@ -57,15 +57,30 @@ void AllCollection::removeNote(Note &note, Collection &mycollection) {
     } else std::cout << "error" << std::endl;
 }
 
-void Collection::addObserver(Observer *o) {
+void AllCollection::addObserver(Observer *o) {
     observers.push_back(o);
 }
 
-void Collection::removeObserver(Observer *o) {
+void AllCollection::removeObserver(Observer *o) {
     observers.remove(o);
 }
 
-void Collection::notify() {
+void AllCollection::notify() {
     for (auto ob: observers)
         ob->update();
 }
+
+int AllCollection::getSize() const {
+    return collection.size();
+}
+
+int AllCollection::getImportantCounter() const {
+    int counter = 0;
+    for (auto c: collection) {
+        if (c.getImportant()) {
+            counter++;
+        }
+    }
+    return counter;
+}
+

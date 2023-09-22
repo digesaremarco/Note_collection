@@ -116,3 +116,7 @@ int Collection::getLockedNotes() const {
 bool Collection::operator==(const Collection &other) {
     return title == other.title;
 }
+
+bool Collection::getImportant() const {
+    return important;
+}
