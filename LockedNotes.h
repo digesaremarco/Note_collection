@@ -14,8 +14,9 @@ private:
     Collection &subject;
 
 public:
-    LockedNotes(Collection &s) : subject(s) {
-        subject.addObserver(this);
+    LockedNotes(Collection s) : subject(s) {
+            subject.addObserver(this);
+            std::cout << "pippo";
     }
 
     void update() override;

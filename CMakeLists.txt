@@ -9,4 +9,4 @@ set(SOURCE_FILES  Note.h Note.cpp Collection.h Collection.cpp
         CollectionCounter.cpp ImportantCollectionCounter.h ImportantCollectionCounter.cpp)
 add_executable(Note_collection main.cpp)
 add_library(core ${SOURCE_FILES})
-target_link_libraries(Note_Collection core)
+target_link_libraries(Note_collection core)

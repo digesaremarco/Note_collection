@@ -6,6 +6,7 @@
 #define NOTE_COLLECTION_NOTECOUNTER_H
 
 
+#include <iostream>
 #include "Observer.h"
 #include "Collection.h"
 
@@ -16,6 +17,7 @@ private:
 public:
     NoteCounter(Collection s) : subject(s) {
         subject.addObserver(this);
+        std::cout << "ytfyt";
     }
 
     int getCounter() const;

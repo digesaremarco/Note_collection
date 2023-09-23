@@ -23,7 +23,7 @@ void Collection::removeNote(Note &oldnote) {
         if (n == oldnote)
             found = true;
     }
-    if (found && oldnote.getLocked()) {
+    if (found && !oldnote.getLocked()) {
         notes.remove(oldnote); //remove only if it finds the note and it is editable
         std::cout << "note removed" << std::endl;
     } else std::cout << "error" << std::endl;
@@ -89,6 +89,7 @@ void Collection::updateLocked(Note &note) {
 
 void Collection::addObserver(Observer *o) {
     observers.push_back(o);
+    std::cout << observers.size();
 }
 
 void Collection::removeObserver(Observer *o) {
