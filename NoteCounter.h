@@ -18,6 +18,8 @@ public:
         subject.addObserver(this);
     }
 
+    int getCounter() const;
+
     void update() override;
 
     ~NoteCounter() override {

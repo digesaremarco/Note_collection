@@ -20,6 +20,8 @@ public:
 
     void update() override;
 
+    int getLockedCounter() const;
+
     ~LockedNotes() override {
         subject.removeObserver(this);
     }

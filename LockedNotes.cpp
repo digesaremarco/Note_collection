@@ -8,3 +8,7 @@
 void LockedNotes::update() {
     std::cout << "There are " << subject.getLockedNotes() << " notes" << std::endl;
 }
+
+int LockedNotes::getLockedCounter() const {
+    return subject.getLockedNotes();
+}

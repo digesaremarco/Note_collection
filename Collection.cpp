@@ -120,3 +120,7 @@ bool Collection::operator==(const Collection &other) {
 bool Collection::getImportant() const {
     return important;
 }
+
+int Collection::getNumObservers() const {
+    return observers.size();
+}

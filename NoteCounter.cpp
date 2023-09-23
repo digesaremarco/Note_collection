@@ -8,3 +8,7 @@
 void NoteCounter::update() {
     std::cout << "There are " << subject.getSize() << " notes" << std::endl;
 }
+
+int NoteCounter::getCounter() const {
+    return subject.getSize();
+}
