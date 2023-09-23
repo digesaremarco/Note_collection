@@ -2,7 +2,7 @@
 #include "../Collection.h"
 #include "../NoteCounter.h"
 #include "../LockedNotes.h"
-#include "googletest/googletest/include/gtest/gtest.h"
+#include "gtest/gtest.h"
 
 
 //test insert new note into collection
