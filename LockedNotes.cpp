@@ -6,9 +6,6 @@
 #include "LockedNotes.h"
 
 void LockedNotes::update() {
-    std::cout << "There are " << subject.getLockedNotes() << " notes" << std::endl;
+    std::cout << "There are " << subject.getLockedNotes() << " locked notes" << std::endl;
 }
 
-int LockedNotes::getLockedCounter() const {
-    return subject.getLockedNotes();
-}

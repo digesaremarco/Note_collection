@@ -55,26 +55,27 @@ void Collection::showNote(Note &note) const {
 void Collection::updateNote(Note &note, std::string ti, std::string t) {
     bool found = false;
     for (auto n: notes) {
-        if (n == note)
+        if (n == note && !note.getLocked()) {
             found = true;
+            Note newnote(ti, t, note.getLocked());
+        }
     }
-    if (found && !note.getLocked()) {//update only if it finds the note and it is editable
-        std::cout << "update title" << std::endl;
-        note.setTitle(ti);
-        std::cout << "update text" << std::endl;
-        note.setText(t);
-    } else std::cout << "error" << std::endl;
+    if (!found)
+        std::cout << "error" << std::endl;
 }
 
 void Collection::updateLocked(Note &note) {
     bool found = false;
     for (auto n: notes) {
-        if (n == note)
+        if (n == note) {
             found = true;
+            Note newnote(note.getTitle(), note.getText(), !note.getLocked());
+        }
     }
     if (found) {
-        note.setLocked(!note.getLocked()); //change only if it finds the note
-        std::cout << note.getLocked() << std::endl;
+        Note newnote(note.getTitle(), note.getText(), !note.getLocked());
+        notes.remove(note);
+        notes.push_back(newnote);
         notify();
     } else std::cout << "note not found" << std::endl;
 }

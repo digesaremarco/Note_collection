@@ -14,7 +14,7 @@ private:
     AllCollection &subject;
 
 public:
-    ImportantCollectionCounter(AllCollection s) : subject(s) {
+    ImportantCollectionCounter(AllCollection &s) : subject(s) {
             subject.addObserver(this);
     }
 

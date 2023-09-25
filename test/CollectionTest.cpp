@@ -121,12 +121,20 @@ TEST(Collection, updateLockedIvalid) {
 }
 
 //test notify observers
-TEST(Collection, notifyObserver){
+TEST(Collection, notifyObserver) {
     std::cout << "notify observers" << std::endl;
     Collection collection("1", false);
     NoteCounter notecounter(collection);
+    LockedNotes lockednotes(collection);
     Note note1("title1", "text1", false);
+    Note note2("title2", "text2", false);
+    Note note3("title3", "text3", true);
     collection.addNote(note1);
+    collection.addNote(note2);
+    collection.addNote(note3);
+    collection.updateLocked(note2);
+    collection.removeNote(note1);
+    collection.removeNote(note3);
+    ASSERT_EQ(2, collection.getSize());
     std::cout << "----------" << std::endl;
-
 }

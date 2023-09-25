@@ -14,13 +14,11 @@ private:
     Collection &subject;
 
 public:
-    LockedNotes(Collection s) : subject(s) {
+    LockedNotes(Collection &s) : subject(s) {
             subject.addObserver(this);
     }
 
     void update() override;
-
-    int getLockedCounter() const;
 
     ~LockedNotes() override {
         subject.removeObserver(this);
