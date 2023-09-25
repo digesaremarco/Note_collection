@@ -15,9 +15,8 @@ private:
     Collection &subject;
 
 public:
-    NoteCounter(Collection s) : subject(s) {
+    explicit NoteCounter(Collection &s) : subject(s) {
         subject.addObserver(this);
-        std::cout << "ytfyt";
     }
 
     int getCounter() const;

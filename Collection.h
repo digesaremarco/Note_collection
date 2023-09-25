@@ -48,8 +48,6 @@ public:
     bool operator==(const Collection &other);
 
     bool getImportant() const;
-
-    int getNumObservers() const;
 };
 
 

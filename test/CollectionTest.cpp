@@ -11,7 +11,7 @@ TEST(Collection, addNote) {
     Collection collection("1", false);
     Note note1("title1", "text1", false);
     collection.addNote(note1);
-    ASSERT_EQ(1, collection.getSize());  //size value expect to be 1
+    ASSERT_EQ(1, collection.getSize());
     std::cout << "----------" << std::endl;
 }
 
@@ -23,7 +23,7 @@ TEST(Collection, addNoteInvalid) {
     Note note2("title1", "text1", false);
     collection.addNote(note1);
     collection.addNote(note2);
-    ASSERT_EQ(1, collection.getSize());  //size value expect to be 1
+    ASSERT_EQ(1, collection.getSize());
     std::cout << "----------" << std::endl;
 }
 
@@ -118,4 +118,15 @@ TEST(Collection, updateLockedIvalid) {
     collection.updateLocked(note2);
     ASSERT_EQ(1, collection.getSize());
     std::cout << "----------" << std::endl;
+}
+
+//test notify observers
+TEST(Collection, notifyObserver){
+    std::cout << "notify observers" << std::endl;
+    Collection collection("1", false);
+    NoteCounter notecounter(collection);
+    Note note1("title1", "text1", false);
+    collection.addNote(note1);
+    std::cout << "----------" << std::endl;
+
 }

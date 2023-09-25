@@ -14,7 +14,8 @@ void Collection::addNote(Note &newnote) {
     if (!found) {
         notes.push_back(newnote); //insert only if it doesn't find the note
         std::cout << "new note added" << std::endl;
-    } else std::cout << "error" << std::endl;
+        notify();
+    } else std::cout << "note already present" << std::endl;
 }
 
 void Collection::removeNote(Note &oldnote) {
@@ -26,7 +27,8 @@ void Collection::removeNote(Note &oldnote) {
     if (found && !oldnote.getLocked()) {
         notes.remove(oldnote); //remove only if it finds the note and it is editable
         std::cout << "note removed" << std::endl;
-    } else std::cout << "error" << std::endl;
+        notify();
+    } else std::cout << "note not found" << std::endl;
 }
 
 void Collection::setTitle(std::string t) {
@@ -47,7 +49,7 @@ void Collection::showNote(Note &note) const {
         std::cout << "title : " << note.getTitle() << std::endl;//show only if it finds the note
         std::cout << "text : " << note.getText() << std::endl;
         std::cout << "locked : " << note.getLocked() << std::endl;
-    } else std::cout << "error" << std::endl;
+    } else std::cout << "note not found" << std::endl;
 }
 
 void Collection::updateNote(Note &note, std::string ti, std::string t) {
@@ -73,7 +75,8 @@ void Collection::updateLocked(Note &note) {
     if (found) {
         note.setLocked(!note.getLocked()); //change only if it finds the note
         std::cout << note.getLocked() << std::endl;
-    } else std::cout << "error" << std::endl;
+        notify();
+    } else std::cout << "note not found" << std::endl;
 }
 
 void Collection::addObserver(Observer *o) {
@@ -108,8 +111,4 @@ bool Collection::operator==(const Collection &other) {
 
 bool Collection::getImportant() const {
     return important;
-}
-
-int Collection::getNumObservers() const {
-    return observers.size();
 }
