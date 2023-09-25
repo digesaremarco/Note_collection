@@ -27,7 +27,7 @@ public:
 
     void showNote(Note &note) const;
 
-    void updateNote(Note &note);
+    void updateNote(Note &note, std::string ti, std::string t);
 
     void updateLocked(Note &note);
 
