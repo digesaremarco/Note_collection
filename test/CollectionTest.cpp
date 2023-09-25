@@ -33,33 +33,40 @@ TEST(Collection, removeNoteInvalid){
     ASSERT_EQ(1,collection.getSize());
 }
 
-//test add observer
-TEST(Collection, addObserver){
+//test show a note that is in the collection
+TEST(Collection, showNote){
     Collection collection("1", false);
-    NoteCounter notecounter(collection);
-    LockedNotes lockednote(collection);
-    ASSERT_EQ(2, collection.getNumObservers());
+    Note note1("title1", "text1", false);
+    collection.addNote(note1);
+    collection.showNote(note1);
+    ASSERT_EQ(1,collection.getSize());
 }
 
-//test remove observer
-TEST(Collection, removeObserver){
+//test show a note that isn't in the collection
+TEST(Collection, showNoteInvalid){
     Collection collection("1", false);
-    NoteCounter notecounter(collection);
-    collection.removeObserver(&notecounter);
-    ASSERT_EQ(0, collection.getNumObservers());
-}
-
-//test notify observers
-TEST(Collection, testObservers){
-    Collection collection("1", false);
-    NoteCounter notecounter(collection);
-    LockedNotes lockednote(collection);
     Note note1("title1", "text1", false);
     Note note2("title2", "text2", false);
-    Note note3("title3", "text3", true);
     collection.addNote(note1);
-    collection.addNote(note2);
-    collection.addNote(note3);
-    ASSERT_EQ(3, notecounter.getCounter());
-    ASSERT_EQ(1, lockednote.getLockedCounter());
+    collection.showNote(note2);
+    ASSERT_EQ(1,collection.getSize());
+}
+
+//test update a note that is in the collection
+TEST(Collection, updateNote){
+    Collection collection("1", false);
+    Note note1("title1", "text1", false);
+    collection.addNote(note1);
+    collection.updateNote(note1);
+    ASSERT_EQ(1,collection.getSize());
+}
+
+//test update a note that isn't in the collection
+TEST(Collection, updateNoteInvalid){
+    Collection collection("1", false);
+    Note note1("title1", "text1", false);
+    Note note2("title2", "text2", false);
+    collection.addNote(note1);
+    collection.updateNote(note2);
+    ASSERT_EQ(1,collection.getSize());
 }

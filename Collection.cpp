@@ -58,7 +58,7 @@ void Collection::updateNote(Note &note) {
         if (n == note)
             found = true;
     }
-    if (found && note.getLocked()) {//update only if it finds the note and it is editable
+    if (found && !note.getLocked()) {//update only if it finds the note and it is editable
         std::cout << "do you want to change the title?" << std::endl;
         std::cin >> choose;
         if (choose) {
@@ -89,7 +89,6 @@ void Collection::updateLocked(Note &note) {
 
 void Collection::addObserver(Observer *o) {
     observers.push_back(o);
-    std::cout << observers.size();
 }
 
 void Collection::removeObserver(Observer *o) {
