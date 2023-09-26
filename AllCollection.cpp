@@ -15,6 +15,7 @@ void AllCollection::addCollection(Collection &newcollection) {
     if (!found) {
         collection.push_back(newcollection);
         std::cout << "new collection added" << std::endl;
+        notify();
     } else std::cout << "collection already present" << std::endl;
 }
 
@@ -28,6 +29,7 @@ void AllCollection::removeCollection(Collection &oldcollection) {
     if (found) {
         collection.remove(oldcollection);
         std::cout << "collection removed" << std::endl;
+        notify();
     } else std::cout << "error" << std::endl;
 }
 
@@ -40,7 +42,6 @@ void AllCollection::addNote(Note &note, Collection &mycollection) const {
     }
     if (found) {
         mycollection.addNote(note);
-        std::cout << "note added" << std::endl;
     } else std::cout << "error" << std::endl;
 }
 
@@ -53,7 +54,6 @@ void AllCollection::removeNote(Note &note, Collection &mycollection) const {
     }
     if (found) {
         mycollection.removeNote(note);
-        std::cout << "note removed" << std::endl;
     } else std::cout << "error" << std::endl;
 }
 
