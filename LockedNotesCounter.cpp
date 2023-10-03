@@ -3,9 +3,9 @@
 //
 
 #include <iostream>
-#include "LockedNotes.h"
+#include "LockedNotesCounter.h"
 
-void LockedNotes::update() {
+void LockedNotesCounter::update() {
     std::cout << "There are " << subject.getLockedNotes() << " locked notes" << std::endl;
 }
 

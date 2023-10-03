@@ -21,17 +21,17 @@ private:
 public:
     Collection(std::string t, bool i) : title(t), important(i) {}
 
-    void addNote(Note &newnote);
+    void addNote(const Note &newnote);
 
-    void removeNote(Note &oldnote);
+    void removeNote(const Note &oldnote);
 
-    void showNote(Note &note) const;
+    Note findNote(const std::string &title) const;
 
-    void updateNote(Note &note, std::string ti, std::string t);
+    void updateNote(const Note &note, const std::string &ti, const std::string &t);
 
-    void updateLocked(Note &note);
+    void updateLocked(const Note &note);
 
-    void setTitle(std::string t);
+    void setTitle(const std::string &t);
 
     std::string getTitle() const;
 

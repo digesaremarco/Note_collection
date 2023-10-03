@@ -1,7 +1,7 @@
 
 #include "../Collection.h"
 #include "../NoteCounter.h"
-#include "../LockedNotes.h"
+#include "../LockedNotesCounter.h"
 #include "gtest/gtest.h"
 
 
@@ -57,7 +57,8 @@ TEST(Collection, showNote) {
     Collection collection("1", false);
     Note note1("title1", "text1", false);
     collection.addNote(note1);
-    collection.showNote(note1);
+    Note note = collection.findNote("title1");
+    std::cout << note.toString() << std::endl;
     ASSERT_EQ(1, collection.getSize());
     std::cout << "----------" << std::endl;
 }
@@ -69,7 +70,8 @@ TEST(Collection, showNoteInvalid) {
     Note note1("title1", "text1", false);
     Note note2("title2", "text2", false);
     collection.addNote(note1);
-    collection.showNote(note2);
+    Note note = collection.findNote("title2");
+    std::cout << note.toString() << std::endl;
     ASSERT_EQ(1, collection.getSize());
     std::cout << "----------" << std::endl;
 }
@@ -125,7 +127,7 @@ TEST(Collection, notifyObserver) {
     std::cout << "notify observers" << std::endl;
     Collection collection("1", false);
     NoteCounter notecounter(collection);
-    LockedNotes lockednotes(collection);
+    LockedNotesCounter lockednotes(collection);
     Note note1("title1", "text1", false);
     Note note2("title2", "text2", false);
     Note note3("title3", "text3", true);

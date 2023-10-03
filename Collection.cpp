@@ -5,7 +5,7 @@
 #include <iostream>
 #include "Collection.h"
 
-void Collection::addNote(Note &newnote) {
+void Collection::addNote(const Note &newnote) {
     bool found = false;
     for (auto n: notes) {
         if (n == newnote)
@@ -18,7 +18,7 @@ void Collection::addNote(Note &newnote) {
     } else std::cout << "note already present" << std::endl;
 }
 
-void Collection::removeNote(Note &oldnote) {
+void Collection::removeNote(const Note &oldnote) {
     bool found = false;
     for (auto n: notes) {
         if (n == oldnote)
@@ -31,7 +31,7 @@ void Collection::removeNote(Note &oldnote) {
     } else std::cout << "note not found" << std::endl;
 }
 
-void Collection::setTitle(std::string t) {
+void Collection::setTitle(const std::string &t) {
     title = t;
 }
 
@@ -39,20 +39,18 @@ std::string Collection::getTitle() const {
     return title;
 }
 
-void Collection::showNote(Note &note) const {
+Note Collection::findNote(const std::string &title) const {
     bool found = false;
     for (auto n: notes) {
-        if (n == note)
-            found = true;
+        if (n.getTitle() == title) {
+            return n;
+        }
     }
-    if (found) {
-        std::cout << "title : " << note.getTitle() << std::endl;//show only if it finds the note
-        std::cout << "text : " << note.getText() << std::endl;
-        std::cout << "locked : " << note.getLocked() << std::endl;
-    } else std::cout << "note not found" << std::endl;
+    if (!found)
+        return Note("", "", false);
 }
 
-void Collection::updateNote(Note &note, std::string ti, std::string t) {
+void Collection::updateNote(const Note &note, const std::string &ti, const std::string &t) {
     bool found = false;
     for (auto n: notes) {
         if (n == note && !note.getLocked()) {
@@ -64,7 +62,7 @@ void Collection::updateNote(Note &note, std::string ti, std::string t) {
         std::cout << "error" << std::endl;
 }
 
-void Collection::updateLocked(Note &note) {
+void Collection::updateLocked(const Note &note) {
     bool found = false;
     for (auto n: notes) {
         if (n == note) {

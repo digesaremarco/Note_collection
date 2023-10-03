@@ -16,7 +16,7 @@ std::string Note::getTitle() const {
     return title;
 }
 
-void Note::setTitle(std::string t) {
+void Note::setTitle(const std::string &t) {
     title = t;
 }
 
@@ -28,6 +28,6 @@ std::string Note::getText() const {
     return text;
 }
 
-void Note::setText(std::string t) {
+void Note::setText(const std::string &t) {
     text = t;
 }
