@@ -32,7 +32,7 @@ public:
     bool operator==(const Note &other);
 
     std::string toString() const {
-        return title + " " + text + " " + (locked ? "locked" : "unlockd");
+        return title + " " + text + " " + (locked ? "locked" : "unlocked");
     };
 
 };

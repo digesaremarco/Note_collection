@@ -60,6 +60,7 @@ TEST(Collection, showNote) {
     Note note = collection.findNote("title1");
     std::cout << note.toString() << std::endl;
     ASSERT_EQ(1, collection.getSize());
+    ASSERT_EQ(note.toString(), "title1 text1 unlocked");
     std::cout << "----------" << std::endl;
 }
 
@@ -73,6 +74,8 @@ TEST(Collection, showNoteInvalid) {
     Note note = collection.findNote("title2");
     std::cout << note.toString() << std::endl;
     ASSERT_EQ(1, collection.getSize());
+    ASSERT_EQ(note.toString(), "  unlocked");
+
     std::cout << "----------" << std::endl;
 }
 
